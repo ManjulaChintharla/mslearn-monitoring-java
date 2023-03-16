@@ -182,15 +182,15 @@ printf "\n"
 printf "Deploying the apps to Spring Apps"
 printf "\n"
 
-az spring-cloud app deploy --name ${api_gateway} \
+az spring app deploy --name ${api_gateway} \
     --artifact-path ${api_gateway_jar} \
     --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql'
 
-az spring-cloud app deploy --name ${admin_server} \
+az spring app deploy --name ${admin_server} \
     --artifact-path ${admin_server_jar} \
     --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql'
 
-az spring-cloud app deploy --name ${customers_service} \
+az spring app deploy --name ${customers_service} \
 --artifact-path ${customers_service_jar} \
 --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql' \
 --env mysql_server_full_name=${mysql_server_full_name} \
@@ -198,7 +198,7 @@ az spring-cloud app deploy --name ${customers_service} \
       mysql_server_admin_login_name=${mysql_server_admin_login_name} \
       mysql_server_admin_password=${mysql_server_admin_password}
 
-az spring-cloud app deploy --name ${vets_service} \
+az spring app deploy --name ${vets_service} \
 --artifact-path ${vets_service_jar} \
 --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql' \
 --env mysql_server_full_name=${mysql_server_full_name} \
@@ -206,7 +206,7 @@ az spring-cloud app deploy --name ${vets_service} \
       mysql_server_admin_login_name=${mysql_server_admin_login_name} \
       mysql_server_admin_password=${mysql_server_admin_password}
 
-az spring-cloud app deploy --name ${visits_service} \
+az spring app deploy --name ${visits_service} \
 --artifact-path ${visits_service_jar} \
 --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql' \
 --env mysql_server_full_name=${mysql_server_full_name} \
