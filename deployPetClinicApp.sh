@@ -122,29 +122,29 @@ printf "Creating the microservice apps"
 printf "\n"
 
 #az spring app create --name ${api_gateway} --instance-count 1 --assign-endpoint true \
-#    --memory 2Gi --jvm-options='-Xms2048m -Xmx2048m'
+#   --memory 2Gi --jvm-options='-Xms2048m -Xmx2048m'
 
-az spring app create  -n ${api_gateway}  -s ${spring_apps_service}  -g ${resource_group} --assign-endpoint true --cpu 2 --memory 3Gi --instance-count 3
+az spring app create  -n ${api_gateway}  -s ${spring_apps_service}  -g ${resource_group} --assign-endpoint true --cpu 2 --memory 3Gi --instance-count 3 --runtime-version Java_17
 
 #az spring app create --name ${admin_server} --instance-count 1 --assign-endpoint true \
 #    --memory 2Gi --jvm-options='-Xms2048m -Xmx2048m'
 
-az spring app create  -n ${admin_server}  -s ${spring_apps_service}  -g ${resource_group} --assign-endpoint true --cpu 2 --memory 2Gi --instance-count 3
+az spring app create  -n ${admin_server}  -s ${spring_apps_service}  -g ${resource_group} --assign-endpoint true --cpu 2 --memory 2Gi --instance-count 3 --runtime-version Java_17
 
 #az spring app create --name ${customers_service} \
 #    --instance-count 1 --memory 2Gi --jvm-options='-Xms2048m -Xmx2048m'
 
-az spring app create  -n ${customers_service}  -s ${spring_apps_service}  -g ${resource_group} --assign-endpoint true --cpu 2 --memory 2Gi --instance-count 3
+az spring app create  -n ${customers_service}  -s ${spring_apps_service}  -g ${resource_group} --assign-endpoint true --cpu 2 --memory 2Gi --instance-count 3 --runtime-version Java_17
 
 #az spring app create --name ${vets_service} \
 #    --instance-count 1 --memory 2Gi --jvm-options='-Xms2048m -Xmx2048m'
 
-az spring app create  -n ${vets_service}  -s ${spring_apps_service}  -g ${resource_group} --assign-endpoint true --cpu 2 --memory 2Gi --instance-count 3
+az spring app create  -n ${vets_service}  -s ${spring_apps_service}  -g ${resource_group} --assign-endpoint true --cpu 2 --memory 2Gi --instance-count 3 --runtime-version Java_17
 
 #az spring app create --name ${visits_service} \
 #    --instance-count 1 --memory 2Gi --jvm-options='-Xms2048m -Xmx2048m'
 
-az spring app create  -n ${visits_service}  -s ${spring_apps_service}  -g ${resource_group} --assign-endpoint true --cpu 2 --memory 2Gi --instance-count 3
+az spring app create  -n ${visits_service}  -s ${spring_apps_service}  -g ${resource_group} --assign-endpoint true --cpu 2 --memory 2Gi --instance-count 3 --runtime-version Java_17
 
 
 # increase connection timeout
@@ -202,6 +202,8 @@ printf "\n"
 #    --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql'
 
 az spring app deploy -n ${api_gateway} -s ${spring_apps_service} -g ${resource_group} --artifact-path ${api_gateway_jar} --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql' --env foo=bar
+
+#--env foo=bar --disable-validation
 
 #az spring app deploy --name ${admin_server} \
 #    --artifact-path ${admin_server_jar} \
